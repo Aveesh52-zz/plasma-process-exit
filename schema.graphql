@@ -1,0 +1,8 @@
+type ProcessEntity @entity {
+  id: ID!
+  exitId: BigInt!
+  exitor: Bytes!
+  token: Bytes!
+  amount:BigInt! 
+  transaction:Bytes! 
+}

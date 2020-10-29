@@ -1,0 +1,24 @@
+specVersion: 0.0.2
+description: plasma-process-exit
+repository: https://github.com/Aveesh52/plasma-process-exit
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Plasma Confirm Withdraw
+    network: mainnet
+    source:
+      abi: WithdrawManager
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - ProcessEntity
+      abis:
+        - name: WithdrawManager
+          file: Plasma Confirm Withdraw/abis/WithdrawManager.json
+      eventHandlers:
+        - event: Withdraw(indexed uint256,indexed address,indexed address,uint256)
+          handler: handleProcessWithdraw
+      file: Plasma Confirm Withdraw/Plasma Confirm Withdraw.wasm
